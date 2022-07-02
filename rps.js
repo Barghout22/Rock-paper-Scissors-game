@@ -12,21 +12,23 @@ return results[selector];
 function playRound(playerSelection,computerSelection)
 {
 playerSelection=playerSelection.toLowerCase();
-let gameResult;
 switch (playerSelection)
 {
 case 'rock':
     if(computerSelection==='rock')
     {
-        gameResult='computer chose rock.It is a tie!';
+        console.log('computer chose rock.It is a tie!');
+        return 'tie';
     }
     else if(computerSelection==='paper')
     {
-        gameResult='computer chose paper.You lose!';
+        console.log('computer chose paper.You lose!');
+        return 'computerWin';
     }
     else
     {
-        gameResult='computer chose scissors.You win!!';
+        console.log('computer chose scissors.You win!!');
+        return 'playerWin';
     }
     
 break;
@@ -35,15 +37,18 @@ case 'paper':
     
     if(computerSelection==='rock')
     {
-        gameResult='computer chose rock.You win!!';
+        console.log('computer chose rock.You win!!');
+        return 'playerWin';
     }
     else if(computerSelection==='paper')
     {
-        gameResult='computer chose paper.It is a tie!';
+        console.log('computer chose paper.It is a tie!');
+        return 'tie';
     }
     else
     {
-        gameResult='computer chose scissors.You lose!';
+        console.log('computer chose scissors.You lose!');
+        return 'computerWin';
     }
     
 break;
@@ -52,24 +57,54 @@ case 'scissors':
 
     if(computerSelection==='rock')
     {
-        gameResult='computer chose rock.You lose!';
+        console.log('computer chose rock.You lose!');
+        return 'computerWin';
     }
     else if(computerSelection==='paper')
     {
-        gameResult='computer chose paper.You win!!';
+        console.log('computer chose paper.You win!!');
+        return 'playerWin';
     }
     else
     {
-        gameResult='computer chose scissors.It is a tie!';
+        console.log('computer chose scissors.It is a tie!');
+        return 'tie';
     }
     
 break;
 
 default:
-    gameResult='you have not entered a valid selection.try again';
+   console.log('you have entered an invalid selection.try again');
     
 }
-return gameResult;
+
+}
+
+//a function to play a game of five rounds .
+function game()
+{
+let playerWins= 0;
+let computerWins= 0;
+let roundResult;
+
+for(let i=0;i<5;i++)
+{
+let playerChoice=prompt('enter your selection:')
+roundResult=playRound(playerChoice,computerPlays());
+if (roundResult==='playerWin')
+{
+    playerWins++;
+}
+else if (roundResult==='computerWin')
+{
+computerWins++;
+}
+
+console.log(`you:${playerWins} - computer:${computerWins}`);
+
+}
 
 
 }
+
+game();
