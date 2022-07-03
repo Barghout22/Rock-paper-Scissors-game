@@ -1,0 +1,27 @@
+body
+{
+display: flex;
+flex-direction: column;
+justify-content:center;
+align-items: center;
+text-align: center;
+background-color: bisque;
+
+}
+
+button
+{
+    padding: 20px;
+    font-weight: bold;
+    background-color: aqua;
+}
+
+p
+{
+font-weight: bold;
+font-family:'Courier New', Courier, monospace;
+font-size: 25px;
+margin: 30px;
+padding: 30px;
+padding-top: 100px;
+}

@@ -1,5 +1,12 @@
 
  //function to provide a random play from the computer:
+ const container=document.querySelector('container');
+ const paragraph=document.querySelector('intro');
+ let display=document.createElement('p');
+ display='Results go here';
+ container.appendChild(display);
+ let playerOverallResult=0;
+ let computerOverAllResult=0;
  function computerPlays()
  {
 let results=['rock','paper','scissors'];
@@ -12,6 +19,20 @@ return results[selector];
 function playRound(playerSelection,computerSelection)
 {
 playerSelection=playerSelection.toLowerCase();
+if(playerOverallResult==5)
+{
+    container.remove(display);
+    display=`Game ended! Player wins "${playerOverallResult}"-"${computerOverAllResult}"`;
+    container.appendChild(display);
+    return;
+}
+else if(computerOverAllResult==5)
+{
+container.remove(display);
+display=`Game ended! Computer Wins "${computerOverAllResult}"-"${playerOverallResult}"`;
+container.appendChild(display);
+return;
+}
 switch (playerSelection)
 {
 case 'rock':
@@ -23,11 +44,13 @@ case 'rock':
     else if(computerSelection==='paper')
     {
         console.log('computer chose paper.You lose!');
+        computerOverAllResult++;
         return 'computerWin';
     }
     else
     {
         console.log('computer chose scissors.You win!!');
+        playerOverallResult++;
         return 'playerWin';
     }
     
@@ -38,6 +61,7 @@ case 'paper':
     if(computerSelection==='rock')
     {
         console.log('computer chose rock.You win!!');
+        playerOverallResult++;
         return 'playerWin';
     }
     else if(computerSelection==='paper')
@@ -48,6 +72,7 @@ case 'paper':
     else
     {
         console.log('computer chose scissors.You lose!');
+        computerOverAllResult++;
         return 'computerWin';
     }
     
@@ -58,11 +83,13 @@ case 'scissors':
     if(computerSelection==='rock')
     {
         console.log('computer chose rock.You lose!');
+        computerOverAllResult++;
         return 'computerWin';
     }
     else if(computerSelection==='paper')
     {
         console.log('computer chose paper.You win!!');
+        playerOverallResult++;
         return 'playerWin';
     }
     else
@@ -80,8 +107,12 @@ default:
 
 }
 
+const buttons=document.querySelectorAll('button');
+
+buttons.forEach(button=>button.addEventListener('click',()=>{playRound(button.classList.value,computerPlays())}))
+
 //a function to play a game of five rounds .
-function game()
+/*function game()
 {
 let playerWins= 0;
 let computerWins= 0;
@@ -108,3 +139,4 @@ console.log(`you:${playerWins} - computer:${computerWins}`);
 }
 
 game();
+*/
