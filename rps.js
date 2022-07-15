@@ -9,6 +9,10 @@
  result.textContent='';
  container.appendChild(display);
  container.appendChild(result);
+ const newGameButton=document.createElement('button');
+ newGameButton.classList.add('newBttn');
+ newGameButton.textContent='Play new Game';
+ container.appendChild(newGameButton);
  let playerOverallResult=0;
  let computerOverAllResult=0;
  function computerPlays()
@@ -22,7 +26,18 @@ return results[selector];
   
 function playRound(playerSelection,computerSelection)
   {
-  
+  if(playerSelection==='newBttn')
+  {
+    playerOverallResult=0;
+    computerOverAllResult=0
+    display.textContent='';
+    result.textContent=`player:${playerOverallResult} - Computer: ${computerOverAllResult}`;
+  }
+  else{
+    if((playerOverallResult==5)||(computerOverAllResult==5))
+    {
+      return;
+    }
   switch (playerSelection)
   {
   case 'rock':
@@ -40,26 +55,26 @@ function playRound(playerSelection,computerSelection)
         display.textContent='computer chose scissors.You win!!';
           playerOverallResult++;
       }
-      result.textContent=`player:${playerOverallResult}- Computer: ${computerOverAllResult}`;
+      result.textContent=`player:${playerOverallResult} - Computer: ${computerOverAllResult}`;
   
   
       if(playerOverallResult==5)
       {
-          display.textContent=`Game ended! Player wins ${playerOverallResult}-${computerOverAllResult}`;
-          result.textContent= 'Press a button to play again!';
+          display.textContent=`Game ended! Player wins ${playerOverallResult} - ${computerOverAllResult}`;
+          result.textContent= 'Press the button to play again!';
          // container.appendChild(display);
-          computerOverAllResult=0;
-          playerOverallResult=0;
+          // computerOverAllResult=0;
+          // playerOverallResult=0;
           return;
       }
       else if(computerOverAllResult==5)
       {
        
-        display.textContent=`Game ended! Computer Wins:${computerOverAllResult}-${playerOverallResult}`; 
-        result.textContent='Press a button to play again!';
+        display.textContent=`Game ended! Computer Wins ${computerOverAllResult} - ${playerOverallResult}`; 
+        result.textContent='Press the button to play again!';
         //container.appendChild(display);
-        computerOverAllResult=0;
-        playerOverallResult=0;
+        // computerOverAllResult=0;
+        // playerOverallResult=0;
         return;  
       }
   
@@ -84,26 +99,26 @@ function playRound(playerSelection,computerSelection)
           computerOverAllResult++;
       }
 
-      result.textContent=`player:${playerOverallResult}- Computer: ${computerOverAllResult}`;
+      result.textContent=`player:${playerOverallResult} - Computer: ${computerOverAllResult}`;
 
 
       if(playerOverallResult==5)
       {
-          display.textContent=`Game ended! Player wins ${playerOverallResult}-${computerOverAllResult}`;
-          result.textContent= 'Press a button to play again!';
+          display.textContent=`Game ended! Player wins ${playerOverallResult} - ${computerOverAllResult}`;
+          result.textContent= 'Press the button to play again!';
          // container.appendChild(display);
-          computerOverAllResult=0;
-          playerOverallResult=0;
+          // computerOverAllResult=0;
+          // playerOverallResult=0;
           return;
       }
       else if(computerOverAllResult==5)
       {
        
-        display.textContent=`Game ended! Computer Wins:${computerOverAllResult}-${playerOverallResult}`; 
-        result.textContent='Press a button to play again!';
+        display.textContent=`Game ended! Computer Wins ${computerOverAllResult} - ${playerOverallResult}`; 
+        result.textContent='Press the button to play again!';
         //container.appendChild(display);
-        computerOverAllResult=0;
-        playerOverallResult=0;
+        // computerOverAllResult=0;
+        // playerOverallResult=0;
         return;  
       }
   break;
@@ -124,25 +139,25 @@ function playRound(playerSelection,computerSelection)
       {
         display.textContent='computer chose scissors.It is a tie!';
       }
-      result.textContent=`player:${playerOverallResult}- Computer: ${computerOverAllResult}`;
+      result.textContent=`player:${playerOverallResult} - Computer: ${computerOverAllResult}`;
   
       if(playerOverallResult==5)
       {
-          display.textContent=`Game ended! Player wins ${playerOverallResult}-${computerOverAllResult}`;
-          result.textContent= 'Press a button to play again!';
+          display.textContent=`Game ended! Player wins ${playerOverallResult} - ${computerOverAllResult}`;
+          result.textContent= 'Press the button to play again!';
          // container.appendChild(display);
-          computerOverAllResult=0;
-          playerOverallResult=0;
+          // computerOverAllResult=0;
+          // playerOverallResult=0;
           return;
       }
       else if(computerOverAllResult==5)
       {
        
-        display.textContent=`Game ended! Computer Wins:${computerOverAllResult}-${playerOverallResult}`; 
-        result.textContent='Press a button to play again!';
+        display.textContent=`Game ended! Computer Wins ${computerOverAllResult} - ${playerOverallResult}`; 
+        result.textContent='Press the button to play again!';
         //container.appendChild(display);
-        computerOverAllResult=0;
-        playerOverallResult=0;
+        // computerOverAllResult=0;
+        // playerOverallResult=0;
         return;  
       }
   
@@ -153,7 +168,7 @@ function playRound(playerSelection,computerSelection)
       
   
   }
-  
+  }
   }
  
   const buttons=document.querySelectorAll('button');
